@@ -1,171 +1,141 @@
 *,
 *::after,
 *::before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-	color: #333;
-	background: #fff;
-	font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  font-size: 15px;
 }
 
 a {
-	text-decoration: none;
-	color: #aaa;
-	outline: none;
+  text-decoration: none;
+  color: #aaa;
+  outline: none;
 }
 
 a:hover,
 a:focus {
-	color: #333;
+  color: #333;
 }
 
 .hidden {
-	position: absolute;
-	overflow: hidden;
-	width: 0;
-	height: 0;
-	pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 /* Icons */
 .icon {
-	display: block;
-	width: 1.5em;
-	height: 1.5em;
-	margin: 0 auto;
-	fill: currentColor;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 auto;
+  fill: currentColor;
 }
 
 /* Page Loader */
 .js .loading::before {
-	content: '';
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	display: flex;
-	width: 100%;
-	height: 100%;
-	background: rgba(206, 209, 223, 0.9);
+  content: '';
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(206, 209, 223, 0.9);
 }
 
 .js .loading::after {
-	content: '';
-	position: fixed;
-	z-index: 10000;
-	top: 50%;
-	left: 50%;
-	width: 54px;
-	height: 70px;
-	margin: -35px 0 0 -27px;
-	pointer-events: none;
-	border: 4px solid #fff;
-	transition: opacity 0.3s;
-	animation: loaderAnim 0.8s ease-out infinite alternate forwards;
+  content: '';
+  position: fixed;
+  z-index: 10000;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 70px;
+  margin: -35px 0 0 -27px;
+  pointer-events: none;
+  border: 4px solid #fff;
+  transition: opacity 0.3s;
+  animation: loaderAnim 0.8s ease-out infinite alternate forwards;
 }
 
 @keyframes loaderAnim {
-	to {
-		opacity: 0.3;
-		transform: translate3d(0,-100px,0);
-	}
+  to {
+    opacity: 0.3;
+    transform: translate3d(0,-100px,0);
+  }
 }
 
 /* Header */
 .codrops-header {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: center;
-	width: 100%;
-	padding: 0.8em 0.75em;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 0.8em 0.75em;
 }
 
 .codrops-header__title {
-	font-size: 1em;
-	margin: 0;
-	padding: 0 1em;
+  font-size: 1em;
+  margin: 0;
+  padding: 0 1em;
 }
 
 .codrops-header__tagline {
-	margin: 0;
+  margin: 0;
 }
 
 /* Top Navigation Style */
 .codrops-links {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	white-space: nowrap;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .codrops-icon {
-	display: inline-block;
-	margin: 0.25em;
-	padding: 0.25em;
+  display: inline-block;
+  margin: 0.25em;
+  padding: 0.25em;
 }
 
 /* Demo links */
 .demos {
-	margin: 0 0 0 auto;
+  margin: 0 0 0 auto;
 }
 
 .demo {
-	margin: 0 1em 0.5em 0;
-	padding: 0 0 0.25em;
-	border-bottom: 2px solid transparent;
+  margin: 0 1em 0.5em 0;
+  padding: 0 0 0.25em;
+  border-bottom: 2px solid transparent;
 }
 
 .demo--current {
-	border-color: currentColor;
+  border-color: currentColor;
 }
 
 /* Content */
 .content {
-	padding: 3em 0;
-}
-
-/* Related demos */
-.content--related {
-	font-weight: bold;
-	text-align: center;
-}
-
-.media-item {
-	display: inline-block;
-	padding: 1em;
-	vertical-align: top;
-	transition: color 0.3s;
-}
-
-.media-item__img {
-	max-width: 100%;
-	opacity: 0.6;
-	transition: opacity 0.3s;
-}
-
-.media-item:hover .media-item__img,
-.media-item:focus .media-item__img {
-	opacity: 1;
-}
-
-.media-item__title {
-	font-size: 1em;
-	margin: 0;
-	padding: 0.5em;
+  padding: 3em 0;
 }
 
 @media screen and (max-width: 40em) {
-	.codrops-header {
-		justify-content: center;
-	}
-	.demos {
-		width: 100%;
-		margin: 1em 0 0;
-	}
+  .codrops-header {
+    justify-content: center;
+  }
+  .demos {
+    width: 100%;
+    margin: 1em 0 0;
+  }
 }

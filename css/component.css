@@ -1,0 +1,13 @@
+/* Directly related about Gooey Overlay. */
+.gooey-overlay {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+.gooey-overlay__path01 {
+  fill: #dcc;
+}
+.gooey-overlay__path02 {
+  fill: #baa;
+}
+
+/* Each Other */

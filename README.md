@@ -11,7 +11,7 @@ Yoichi Kobayashi
 
 ## Credits
 
-*third party resources*
+- [glsl-easings](https://github.com/glslify/glsl-easings) by glslify.
 
 ## License
 

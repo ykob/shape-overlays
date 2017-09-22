@@ -5,15 +5,22 @@ class GooeyOverlay {
     this.duration = 500;
     this.delay = 200;
     this.timeStart = Date.now();
-    this.direction = true;
+    this.isOpened = false;
+  }
+  toggle() {
+    if (this.isOpened === false) {
+      this.open();
+    } else {
+      this.close();
+    }
   }
   open() {
-    this.direction = true;
+    this.isOpened = true;
     this.timeStart = Date.now();
     this.renderLoop();
   }
   close() {
-    this.direction = false;
+    this.isOpened = false;
     this.timeStart = Date.now();
     this.renderLoop();
   }
@@ -79,7 +86,7 @@ class GooeyOverlay {
     `;
   }
   render() {
-    if (this.direction) {
+    if (this.isOpened) {
       this.path1.setAttribute('d', this.updatePathOpen(Date.now() - this.timeStart));
       this.path2.setAttribute('d', this.updatePathOpen(Date.now() - (this.timeStart + this.delay)));
     } else {
@@ -89,13 +96,7 @@ class GooeyOverlay {
   }
   renderLoop() {
     this.render();
-    if (Date.now() - this.timeStart >= this.duration + this.delay + 300) {
-      if (!this.direction) {
-        this.open();
-      } else {
-        this.close();
-      }
-    } else {
+    if (Date.now() - this.timeStart < this.duration + this.delay + 300) {
       requestAnimationFrame(() => {
         this.renderLoop();
       });
@@ -104,8 +105,16 @@ class GooeyOverlay {
 }
 
 (function() {
+  const elmHamburger = document.querySelector('.hamburger');
   const elmOverlay = document.querySelector('.gooey-overlay');
   const overlay = new GooeyOverlay(elmOverlay);
 
-  overlay.close();
+  elmHamburger.addEventListener('click', () => {
+    overlay.toggle();
+    if (overlay.isOpened === true) {
+      elmHamburger.classList.add('is-opened-navi');
+    } else {
+      elmHamburger.classList.remove('is-opened-navi');
+    }
+  });
 }());

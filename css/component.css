@@ -57,6 +57,7 @@
   cursor: pointer;
   position: absolute;
   bottom: 10%; right: 0; left: 0;
+  z-index: 100;
   margin-right: auto;
   margin-left: auto;
   border-radius: 50%;

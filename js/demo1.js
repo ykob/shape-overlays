@@ -26,63 +26,63 @@ class GooeyOverlay {
   }
   updatePathOpen(time) {
     const p = [
-      100 - ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 0, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 50, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 300, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 150, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 0, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 50, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 300, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 150, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
     ];
     return `
-      M ${p[0]} 0 C ${p[0]}  5
-        ${p[1]}  5 ${p[1]} 10 C ${p[1]} 15
-        ${p[2]} 15 ${p[2]} 20 C ${p[2]} 25
-        ${p[3]} 25 ${p[3]} 30 C ${p[3]} 35
-        ${p[4]} 35 ${p[4]} 40 C ${p[4]} 45
-        ${p[5]} 45 ${p[5]} 50 C ${p[5]} 55
-        ${p[6]} 55 ${p[6]} 60 C ${p[6]} 65
-        ${p[7]} 65 ${p[7]} 70 C ${p[7]} 75
-        ${p[8]} 75 ${p[8]} 80 C ${p[8]} 85
-        ${p[9]} 85 ${p[9]} 90 C ${p[9]} 95
-        ${p[10]} 95 ${p[10]} 100
-      H 100
+      M  0 0
+      V ${p[0]}
+      C  5 ${p[0]}  5 ${p[1]} 10 ${p[1]}
+      C 15 ${p[1]} 15 ${p[2]} 20 ${p[2]}
+      C 25 ${p[2]} 25 ${p[3]} 30 ${p[3]}
+      C 35 ${p[3]} 35 ${p[4]} 40 ${p[4]}
+      C 45 ${p[4]} 45 ${p[5]} 50 ${p[5]}
+      C 55 ${p[5]} 55 ${p[6]} 60 ${p[6]}
+      C 65 ${p[6]} 65 ${p[7]} 70 ${p[7]}
+      C 75 ${p[7]} 75 ${p[8]} 80 ${p[8]}
+      C 85 ${p[8]} 85 ${p[9]} 90 ${p[9]}
+      C 95 ${p[9]} 95 ${p[10]} 100 ${p[10]}
       V 0
+      H 0
     `;
   }
   updatePathClose(time) {
     const p = [
-      100 - ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 0, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 50, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 300, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 150, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
-      100 - ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 0, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 50, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 300, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 200, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 150, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 250, 0) / this.duration, 1)) * 100,
+      ease.cubicInOut(Math.min(Math.max(time - 100, 0) / this.duration, 1)) * 100,
     ];
     return `
-      M 0 0
-      H ${p[0]}  C ${p[0]}  5
-        ${p[1]}  5 ${p[1]} 10 C ${p[1]} 15
-        ${p[2]} 15 ${p[2]} 20 C ${p[2]} 25
-        ${p[3]} 25 ${p[3]} 30 C ${p[3]} 35
-        ${p[4]} 35 ${p[4]} 40 C ${p[4]} 45
-        ${p[5]} 45 ${p[5]} 50 C ${p[5]} 55
-        ${p[6]} 55 ${p[6]} 60 C ${p[6]} 65
-        ${p[7]} 65 ${p[7]} 70 C ${p[7]} 75
-        ${p[8]} 75 ${p[8]} 80 C ${p[8]} 85
-        ${p[9]} 85 ${p[9]} 90 C ${p[9]} 95
-        ${p[10]} 95 ${p[10]} 100
+      M  0 ${p[0]}
+      C  5 ${p[0]}  5 ${p[1]} 10 ${p[1]}
+      C 15 ${p[1]} 15 ${p[2]} 20 ${p[2]}
+      C 25 ${p[2]} 25 ${p[3]} 30 ${p[3]}
+      C 35 ${p[3]} 35 ${p[4]} 40 ${p[4]}
+      C 45 ${p[4]} 45 ${p[5]} 50 ${p[5]}
+      C 55 ${p[5]} 55 ${p[6]} 60 ${p[6]}
+      C 65 ${p[6]} 65 ${p[7]} 70 ${p[7]}
+      C 75 ${p[7]} 75 ${p[8]} 80 ${p[8]}
+      C 85 ${p[8]} 85 ${p[9]} 90 ${p[9]}
+      C 95 ${p[9]} 95 ${p[10]} 100 ${p[10]}
+      V 100
       H 0
-      V 0
     `;
   }
   render() {

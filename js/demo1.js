@@ -9,14 +9,16 @@ class GooeyOverlay {
     this.numPoints = 18;
     this.duration = 600;
     this.delayPointsArray = [];
-    this.delayPoints = 240;
+    this.delayPoints = 300;
     this.delayPerPath = 60;
     this.timeStart = Date.now();
     this.isOpened = false;
   }
   toggle() {
+    const range = 4 * Math.random() + 6;
     for (var i = 0; i < this.numPoints + 1; i++) {
-      this.delayPointsArray[i] = Math.random() * this.delayPoints;
+      const radian = i / this.numPoints * Math.PI;
+      this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPoints;
     }
     if (this.isOpened === false) {
       this.open();
@@ -39,7 +41,7 @@ class GooeyOverlay {
   updatePathOpen(time) {
     const points = [];
     for (var i = 0; i < this.numPoints + 1; i++) {
-      points[i] = ease.quadraticInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+      points[i] = ease.cubicIn(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
     }
 
     let str = `M 0 0 V ${points[0]} `;
@@ -54,7 +56,7 @@ class GooeyOverlay {
   updatePathClose(time) {
     const points = [];
     for (var i = 0; i < this.numPoints + 1; i++) {
-      points[i] = ease.quadraticInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+      points[i] = ease.cubicIn(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
     }
 
     let str = `M 0 ${points[0]} `;

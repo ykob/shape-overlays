@@ -10,13 +10,13 @@
   pointer-events: auto;
 }
 .gooey-overlay__path01 {
-  fill: #fff;
+  fill: #c4dbea;
 }
 .gooey-overlay__path02 {
-  fill: #aab;
+  fill: #4c688b;
 }
 .gooey-overlay__path03 {
-  fill: #889;
+  fill: #2e496a;
 }
 
 /* Background-color for contents */
@@ -24,7 +24,7 @@
   min-height: 100vh;
 }
 .main--demo1 {
-  background-color: #ccd;
+  background-color: #588cb1;
 }
 
 /* Each Other */

@@ -1,24 +1,40 @@
 /* Directly related about Gooey Overlay. */
 .gooey-overlay {
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0; left: 0;
+}
+.gooey-overlay.is-opened {
+  pointer-events: auto;
 }
 .gooey-overlay__path01 {
-  fill: #dcc;
+  fill: #fff;
 }
 .gooey-overlay__path02 {
-  fill: #baa;
+  fill: #aab;
+}
+.gooey-overlay__path03 {
+  fill: #889;
+}
+
+/* Background-color for contents */
+.main {
+  min-height: 100vh;
+}
+.main--demo1 {
+  background-color: #ccd;
 }
 
 /* Each Other */
 .demo-title {
   line-height: 1.5;
   position: absolute;
-  top: 40%; right: 0; left: 0;
-  margin: 0;
+  top: 45%; right: 0; left: 0;
+  margin: -0.75em 0 0;
   padding-left: 0.1em;
-  font-size: 64px;
+  font-size: 90px;
   font-weight: 400;
   text-align: center;
   letter-spacing: 0.1em;

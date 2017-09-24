@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Teko');
+@import url('https://fonts.googleapis.com/css?family=Teko|Noto+Serif|PT+Sans:400i');
 
 /* Directly related about Gooey Overlay. */
 .gooey-overlay {
@@ -11,25 +11,39 @@
 .gooey-overlay.is-opened {
   pointer-events: auto;
 }
-.gooey-overlay__path01 {
-  fill: #c4dbea;
-}
-.gooey-overlay__path02 {
-  fill: #4c688b;
-}
-.gooey-overlay__path03 {
-  fill: #2e496a;
-}
+
+.gooey-overlay__path-demo-1:nth-of-type(1) { fill: #c4dbea; }
+.gooey-overlay__path-demo-1:nth-of-type(2) { fill: #4c688b; }
+.gooey-overlay__path-demo-1:nth-of-type(3) { fill: #2e496a; }
+
+.gooey-overlay__path-demo-2:nth-of-type(1) { fill: #b5cea6; }
+.gooey-overlay__path-demo-2:nth-of-type(2) { fill: #fff; }
+.gooey-overlay__path-demo-2:nth-of-type(3) { fill: #f0dca7; }
+.gooey-overlay__path-demo-2:nth-of-type(4) { fill: #d2b053; }
+
+.gooey-overlay__path-demo-3:nth-of-type(1) { fill: #99385d; }
 
 /* Background-color for contents */
 .main {
   min-height: 100vh;
 }
-.main--demo1 {
+.main--demo-1 {
   background-color: #588cb1;
+}
+.main--demo-2 {
+  background-color: #8ab471;
+}
+.main--demo-3 {
+  background-color: #da6f97;
 }
 .content--demo-1 {
   font-family: 'Teko', sans-serif;
+}
+.content--demo-2 {
+  font-family: 'Noto Serif', serif;
+}
+.content--demo-3 {
+  font-family: 'PT Sans', sans-serif;
 }
 
 /* Each Other */
@@ -40,11 +54,19 @@
   margin: -0.75em 0 0;
   padding-left: 0.1em;
   color: #fff;
-  font-size: 12vw;
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+.demo-title--demo-1 {
+  font-size: 12vw;
+}
+.demo-title--demo-2 {
+  font-size: 10vw;
+}
+.demo-title--demo-3 {
+  font-size: 11vw;
 }
 
 @-webkit-keyframes intervalHamburgerBorder {
@@ -224,7 +246,7 @@
 
 .global-menu {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -237,17 +259,25 @@
   pointer-events: none;
   z-index: 100;
 }
-.global-menu__wrap {
-
-}
 .global-menu__item {
   display: block;
-  font-size: 4vw;
-  letter-spacing: 0.1em;
   opacity: 0;
+  letter-spacing: 0.1em;
   transform: scale(0.9);
   transition-duration: 0.6s;
   transition-property: opacity, transform;
+}
+.global-menu__item--demo-1 {
+  font-size: 4vw;
+}
+.global-menu__item--demo-2 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 3.5vw;
+}
+.global-menu__item--demo-3 {
+  font-size: 3.5vw;
+  transition-duration: 0s;
 }
 .global-menu__item.is-opened {
   opacity: 1;
@@ -258,3 +288,11 @@
 .global-menu__item.is-opened:nth-of-type(2) { transition-delay: 0.75s }
 .global-menu__item.is-opened:nth-of-type(3) { transition-delay: 0.8s }
 .global-menu__item.is-opened:nth-of-type(4) { transition-delay: 0.85s }
+
+.global-menu__item--demo-3.is-opened {
+  transition-duration: 0.6s;
+}
+.global-menu__item--demo-3.is-opened:nth-of-type(1) { transition-delay: 0.3s }
+.global-menu__item--demo-3.is-opened:nth-of-type(2) { transition-delay: 0.35s }
+.global-menu__item--demo-3.is-opened:nth-of-type(3) { transition-delay: 0.4s }
+.global-menu__item--demo-3.is-opened:nth-of-type(4) { transition-delay: 0.45s }

@@ -2,19 +2,17 @@ class GooeyOverlay {
   constructor(elm) {
     this.elm = elm;
     this.path = elm.querySelectorAll('path');
-    this.numPoints = 18;
-    this.duration = 600;
+    this.numPoints = 3;
+    this.duration = 800;
     this.delayPointsArray = [];
-    this.delayPointsMax = 300;
-    this.delayPerPath = 60;
+    this.delayPointsMax = 0;
+    this.delayPerPath = 50;
     this.timeStart = Date.now();
     this.isOpened = false;
   }
   toggle() {
-    const range = 4 * Math.random() + 6;
     for (var i = 0; i < this.numPoints; i++) {
-      const radian = i / (this.numPoints - 1) * Math.PI;
-      this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
+      this.delayPointsArray[i] = 0;
     }
     if (this.isOpened === false) {
       this.open();
@@ -36,8 +34,9 @@ class GooeyOverlay {
   }
   updatePath(time) {
     const points = [];
-    for (var i = 0; i < this.numPoints + 1; i++) {
-      points[i] = ease.cubicIn(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+    for (var i = 0; i < this.numPoints; i++) {
+      const thisEase = (i == 1) ? ease.exponentialOut : ease.exponentialIn;
+      points[i] = thisEase(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
     }
 
     let str = '';

@@ -2,19 +2,19 @@ class GooeyOverlay {
   constructor(elm) {
     this.elm = elm;
     this.path = elm.querySelectorAll('path');
-    this.numPoints = 18;
-    this.duration = 600;
+    this.numPoints = 4;
+    this.duration = 800;
     this.delayPointsArray = [];
-    this.delayPointsMax = 300;
-    this.delayPerPath = 60;
+    this.delayPointsMax = 180;
+    this.delayPerPath = 30;
     this.timeStart = Date.now();
     this.isOpened = false;
   }
   toggle() {
-    const range = 4 * Math.random() + 6;
+    const range = Math.random() * Math.PI * 2;
     for (var i = 0; i < this.numPoints; i++) {
-      const radian = i / (this.numPoints - 1) * Math.PI;
-      this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
+      const radian = (i / (this.numPoints - 1)) * Math.PI * 2;
+      this.delayPointsArray[i] = (Math.sin(radian + range) + 1) / 2 * this.delayPointsMax;
     }
     if (this.isOpened === false) {
       this.open();
@@ -36,8 +36,8 @@ class GooeyOverlay {
   }
   updatePath(time) {
     const points = [];
-    for (var i = 0; i < this.numPoints + 1; i++) {
-      points[i] = ease.cubicIn(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+    for (var i = 0; i < this.numPoints; i++) {
+      points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
     }
 
     let str = '';

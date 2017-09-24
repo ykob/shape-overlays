@@ -49,7 +49,7 @@
 
 @-webkit-keyframes intervalHamburgerBorder {
   0% {
-    opacity: 0.4;
+    opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1); }
   80% {
@@ -62,7 +62,7 @@
 
 @keyframes intervalHamburgerBorder {
   0% {
-    opacity: 0.4;
+    opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1); }
   80% {

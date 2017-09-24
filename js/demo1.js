@@ -77,6 +77,7 @@ class GooeyOverlay {
 
 (function() {
   const elmHamburger = document.querySelector('.hamburger');
+  const gNavItems = document.querySelectorAll('.global-menu__item');
   const elmOverlay = document.querySelector('.gooey-overlay');
   const overlay = new GooeyOverlay(elmOverlay);
 
@@ -84,8 +85,14 @@ class GooeyOverlay {
     overlay.toggle();
     if (overlay.isOpened === true) {
       elmHamburger.classList.add('is-opened-navi');
+      for (var i = 0; i < gNavItems.length; i++) {
+        gNavItems[i].classList.add('is-opened');
+      }
     } else {
       elmHamburger.classList.remove('is-opened-navi');
+      for (var i = 0; i < gNavItems.length; i++) {
+        gNavItems[i].classList.remove('is-opened');
+      }
     }
   });
 }());

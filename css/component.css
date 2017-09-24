@@ -80,7 +80,7 @@
   cursor: pointer;
   position: absolute;
   bottom: 10%; right: 0; left: 0;
-  z-index: 100;
+  z-index: 110;
   margin-right: auto;
   margin-left: auto;
   border-radius: 50%;
@@ -221,3 +221,40 @@
   .hamburger.is-opened-navi:hover .hamburger__line-in--01:before, .hamburger.is-opened-navi:hover .hamburger__line-in--01:after, .hamburger.is-opened-navi:hover .hamburger__line-in--02:before, .hamburger.is-opened-navi:hover .hamburger__line-in--02:after, .hamburger.is-opened-navi:hover .hamburger__line-in--03:before, .hamburger.is-opened-navi:hover .hamburger__line-in--03:after {
     -webkit-transition-duration: 0s;
     transition-duration: 0s; }
+
+.global-menu {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+.global-menu__wrap {
+
+}
+.global-menu__item {
+  display: block;
+  font-size: 4vw;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: scale(0.9);
+  transition-duration: 0.6s;
+  transition-property: opacity, transform;
+}
+.global-menu__item.is-opened {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.global-menu__item.is-opened:nth-of-type(1) { transition-delay: 0.7s }
+.global-menu__item.is-opened:nth-of-type(2) { transition-delay: 0.75s }
+.global-menu__item.is-opened:nth-of-type(3) { transition-delay: 0.8s }
+.global-menu__item.is-opened:nth-of-type(4) { transition-delay: 0.85s }

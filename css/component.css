@@ -11,7 +11,6 @@
 .gooey-overlay.is-opened {
   pointer-events: auto;
 }
-
 .gooey-overlay__path-demo-1:nth-of-type(1) { fill: #c4dbea; }
 .gooey-overlay__path-demo-1:nth-of-type(2) { fill: #4c688b; }
 .gooey-overlay__path-demo-1:nth-of-type(3) { fill: #2e496a; }
@@ -21,7 +20,9 @@
 .gooey-overlay__path-demo-2:nth-of-type(3) { fill: #f0dca7; }
 .gooey-overlay__path-demo-2:nth-of-type(4) { fill: #d2b053; }
 
-.gooey-overlay__path-demo-3:nth-of-type(1) { fill: #99385d; }
+.gooey-overlay__path-demo-3:nth-of-type(1) { fill: #c44374; }
+.gooey-overlay__path-demo-3:nth-of-type(2) { fill: #e7c4d1; }
+.gooey-overlay__path-demo-3:nth-of-type(3) { fill: #99385d; }
 
 /* Background-color for contents */
 .main {

@@ -277,6 +277,8 @@
   font-size: 3.5vw;
 }
 .global-menu__item--demo-3 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
   font-size: 3.5vw;
   transition-duration: 0s;
 }

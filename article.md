@@ -1,0 +1,78 @@
+# Gooey Overlay
+
+今回は、ウェブページの画面遷移時の演出を、SVGとベジェ曲線を用いてよりユニークに見せる方法をご紹介します。  
+ベジェ曲線を描画するpath要素の制御座標をアニメーションさせ、ぐにょぐにょした動きをするオーバーレイにすることができます。座標のアニメーションにはよく知られたイージング関数を利用します。ベジェ曲線の制御点の数、スピード、遅延値、イージング関数などを工夫することで、様々な見た目のオーバーレイを作ることができます。
+
+## HTML / CSS of SVG
+
+演出に使用するHTMLとCSSは以下のとおりです。  
+HTMLの`svg`要素には、子供の`path`要素をフルスクリーンのサイズに対応させるために、`preserveAspectRatio`属性を指定します。
+
+    <svg class="gooey-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="gooey-overlay__path"></path>
+      <path class="gooey-overlay__path"></path>
+      <path class="gooey-overlay__path"></path>
+    </svg>
+
+`svg`要素は以下のようにCSSを指定して、フルスクリーンのサイズに対応させます。
+
+    .gooey-overlay {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+    }
+
+`path`要素がオーバーレイの各レイヤーに該当します。それぞれの色をCSSで指定します。最後の`path`要素がオーバーレイ展開後の背景色に該当します。
+
+    .gooey-overlay path:nth-of-type(1) { fill: #c4dbea; }
+    .gooey-overlay path:nth-of-type(2) { fill: #4c688b; }
+    .gooey-overlay path:nth-of-type(3) { fill: #2e496a; }
+
+## JavaScript GooeyOverlay class
+
+今回のデモ用にオーバーレイの制御用クラスを作成しています。
+このクラスの持つプロパティは以下のとおりです。制御点の数やアニメーションの長さ、遅延の最大値などを決めることが出来、これらを変更することでオーバーレイの見た目を変化させることができます。
+
+    class GooeyOverlay {
+      constructor(elm) {
+        this.elm = elm; // Parent SVG element.
+        this.path = elm.querySelectorAll('path'); // Path elements in parent SVG. These are layers of Overlay.
+        this.numPoints = 18; // Number of Control points for Bezier Curve.
+        this.duration = 600; // Animation duration of one path element.
+        this.delayPointsArray = []; //
+        this.delayPointsMax = 300; // Max of delay value in all control points.
+        this.delayPerPath = 60; // Delay value per pass.
+        this.timeStart = Date.now();
+        this.isOpened = false;
+      }
+      ...
+    }
+    const elmOverlay = document.querySelector('.gooey-overlay');
+    const overlay = new GooeyOverlay(elmOverlay);
+
+オーバーレイの見た目を決めるさらなる要素が、`GooeyOverlay.toggle()`メソッドと`GooeyOverlay.updatePath()`メソッドです。
+
+`GooeyOverlay.toggle()`メソッドはそのオーバーレイを開閉する機能を持ちますが、同時に各制御点の遅延値を開閉時に都度設定する役割も持っています。
+
+`GooeyOverlay.updatePath()`メソッドは`requestAnimationFrame`によって、アニメーションが開始されてから終了するまで毎フレーム実行されます。
+引数`time`には0から1までの値が入力されるようになっており、それをイージング関数に用いることで制御点ごとのアニメーションを制御しています。この箇所の計算方法はあなたが任意に設定することが出来ます。
+
+demo1ではすべての制御点に同じイージング関数を用い、且つ三角関数を用いて遅延値を細かい波のように設定することで、画面が「溶ける」ような見た目を演出しています。
+
+    toggle() {
+      const range = 4 * Math.random() + 6;
+      for (var i = 0; i < this.numPoints; i++) {
+        const radian = i / (this.numPoints - 1) * Math.PI;
+        this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
+      }
+      ...
+    }
+
+    updatePath(time) {
+      const points = [];
+      for (var i = 0; i < this.numPoints; i++) {
+        points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+      }
+      ...
+    }

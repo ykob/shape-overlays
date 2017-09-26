@@ -78,3 +78,7 @@ demo1ではすべての制御点に同じイージング関数を用い、且つ
     }
 
 今回作成したデモではオーバーレイを、ハンバーガーボタンによって開閉するフルスクリーンのグローバルメニューの背景として利用していますが、例えばページ遷移やスクロールの演出に利用することも可能です。
+
+## Credits
+
+- [glsl-easings](https://github.com/glslify/glsl-easings) by glslify. Easing functions that use to demos are based on the code of glsl-easing module.

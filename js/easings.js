@@ -1,3 +1,8 @@
+//
+// these easing functions are based on the code of glsl-easing module.
+// https://github.com/glslify/glsl-easings
+//
+
 const ease = {
   exponentialIn: (t) => {
     return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));

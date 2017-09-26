@@ -1,15 +1,15 @@
 # Gooey Overlay
 
-今回はSVGと曲線を用いた、CSSだけでは表現することのできない、ユニークな画面効果の実装方法をご紹介します。  
-曲線を描くpath要素の各制御座標をアニメーションさせて、ぐにょぐにょした動きをする矩形（オーバーレイ）を作るというものです。  
-この演出のアニメーションには、よく知られたイージング関数を利用します。  
-曲線の制御点の数、スピード、遅延値、イージング関数などを工夫することで様々な見た目のオーバーレイを作ることができるので、  
-これを画面遷移などのウェブページ上のインタラクションに用いることでUIをより印象的なものにすることができます。
+This time we will show you how to implement a unique screen effect that can not be expressed with CSS alone, using SVG and curves.
+Drawing a curved line It animates each control coordinates of path elements and creates a rectangle (overlay) that have a gooey motion.
+We use well-known easing function for this animation.
+Various apparent overlays can be created by devising the number of control points of the curve, speed, delay value, easing function, and so on,
+You can make UI more impressive by using this as an interaction on a web page such as screen transition.
 
 ## HTML / CSS of SVG
 
-今回の演出に使用する基礎的なHTMLとCSSは以下のとおりです。  
-アニメーションさせる`path`要素を可変する`svg`要素のサイズに適宜対応させるために、`svg`要素には`preserveAspectRatio`属性を指定し、その値は`none`とします。
+The basic HTML and CSS used for this production are as follows.
+For match the size of `path` elements to the size of `svg` element, set the `preserveAspectRatio` attribute to `svg` element and set its value to `none`.
 
     <svg class="gooey-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
       <path class="gooey-overlay__path"></path>
@@ -17,7 +17,7 @@
       <path class="gooey-overlay__path"></path>
     </svg>
 
-また、`svg`要素には以下のようにCSSを指定して、`svg`要素自体もブラウザウィンドウのサイズと一致させます。
+Also, specify the CSS for `svg` element as follows and make `svg` element itself match the size of the browser window.
 
     .gooey-overlay {
       width: 100vw;
@@ -26,9 +26,9 @@
       top: 0; left: 0;
     }
 
-`path`要素はオーバーレイの各レイヤーに該当します。  
-それぞれの色をCSSで指定しておきます。  
-最後の`path`要素がオーバーレイ展開後の背景色に該当します。
+`path` elements corresponds to each layer of the overlay.  
+Specify each color with CSS.  
+The last `path` element corresponds to the background color after the overlay expansion.  
 
     .gooey-overlay path:nth-of-type(1) { fill: #c4dbea; }
     .gooey-overlay path:nth-of-type(2) { fill: #4c688b; }
@@ -36,8 +36,10 @@
 
 ## JavaScript GooeyOverlay class
 
-今回のデモ用にオーバーレイの制御用クラスを作成しています。
-このクラスの持つプロパティは以下のとおりです。これらのプロパティでは制御点の数やアニメーションの長さ、遅延の最大値などを決めることが出来、これらを変更することでオーバーレイの見た目を様々に変化させることができます。
+We are creating overlay control classes for this demonstration.  
+The properties of this class are as follows.  
+With these properties you can decide the number of control points, animation length, maximum delay, etc.  
+You can change the appearance of the overlay variously by changing each properties.
 
     class GooeyOverlay {
       constructor(elm) {
@@ -56,16 +58,16 @@
     const elmOverlay = document.querySelector('.gooey-overlay');
     const overlay = new GooeyOverlay(elmOverlay);
 
-オーバーレイの見た目を決めるさらなる要素が、`GooeyOverlay.toggle()`メソッドと`GooeyOverlay.updatePath()`メソッドです。
+Further elements that determine the appearance of the overlay are `GooeyOverlay.toggle()` method and `GooeyOverlay.updatePath()` method.
 
-`GooeyOverlay.toggle()`メソッドはそのオーバーレイを開閉する機能を持ちますが、同時に各制御点の遅延値を開閉時に都度設定する役割も持っています。  
-これは一定の値を持ち続けるのでもよいのですが、毎回多少の変化を与えてあげることで演出にメリハリが生まれるでしょう。
+`GooeyOverlay.toggle()` method has the function of opening and closing the overlay, but at the same time it also has the role of setting the delay value of each control point each time it opens and closes.  
+It is not necessary to set the delay value every time, but by giving a little change every time, it will produce sharpness in the production.  
 
-`GooeyOverlay.updatePath()`メソッドは`requestAnimationFrame`によって、アニメーションが開始されてから終了するまで毎フレーム実行されます。
-引数`time`には0から1までの値が入力されるようになっており、それをイージング関数に用いることで制御点ごとのアニメーションを制御しています。  
-この箇所の計算方法はあなたが任意に設定することが出来ます。
+`GooeyOverlay.updatePath()` method is executed by `requestAnimationFrame` every frame from when the animation starts until it ends.  
+A value from 0 to 1 is input to the argument `time`, and by using it as an easing function, animation for each control point is controlled.  
+You can set the calculation method of this part arbitrarily.
 
-demo1ではすべての制御点に同じイージング関数を用い、且つ三角関数を用いて遅延値を細かい波のように設定することで、画面が「溶ける」ような見た目を演出しています。
+In demo 1, the same easing function is used for all control points, and the delay value is set like a fine wave using trigonometric functions, so that the screen is "melted" appearance.
 
     toggle() {
       const range = 4 * Math.random() + 6;
@@ -84,8 +86,8 @@ demo1ではすべての制御点に同じイージング関数を用い、且つ
       ...
     }
 
-今回作成したデモではオーバーレイを、ハンバーガーボタンによって開閉するフルスクリーンのグローバルメニューの背景として利用していますが、例えばページ遷移やスクロールの演出に利用することも可能です。  
-このような演出はユーザーの体験をより楽しげなものにし、ウェブのデザインがユーザーに与える印象をより強いものにしてくれるでしょう。
+In the demo created this time, we use overlay as the background of full screen global menu which opens and closes with hamburger buttons, but it can also be used for page transition and scroll effect, for example.
+Such a production will make the user's experience more enjoyable and will make the impression that the web design gives users more strongly.
 
 ## Credits
 

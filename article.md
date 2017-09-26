@@ -77,4 +77,4 @@ In the demo created this time, we use overlay as the background of full screen g
 
 ## Credits
 
-- [glsl-easings](https://github.com/glslify/glsl-easings) by glslify. Easing functions that use to demos are based on the code of glsl-easing module.
+- [glsl-easings](https://github.com/glslify/glsl-easings) by glslify. Easing functions that use to demos are based on the code of glsl-easings module.

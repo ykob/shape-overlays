@@ -90,6 +90,12 @@ a:focus {
   margin: 0;
   padding: 0 1em;
 }
+.codrops-header__title--demo-4 {
+  color: #566;
+}
+.codrops-header__title--demo-5 {
+  color: #655;
+}
 
 .codrops-header__tagline {
   margin: 0;

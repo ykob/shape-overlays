@@ -1,13 +1,12 @@
-# Gooey Overlay
+# Shape Overlays
 
-*Description*,  
-Yoichi Kobayashi
+Multi-layered SVG shape overlays with adjustable values for a variety of effects. By Yoichi Kobayashi.
 
 ![Image Title](link)
 
-[Article on Codrops]()
+[Article on Codrops](https://tympanus.net/codrops/?p=32699)
 
-[Demo]()
+[Demo](http://tympanus.net/Development/ShapeOverlays/)
 
 ## Credits
 
@@ -22,6 +21,5 @@ This resource can be used freely if integrated or build upon in personal or comm
 Follow Yoichi Kobayashi: [Twitter](https://twitter.com/ykob0123), [GitHub](https://github.com/ykob)
 
 Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [Google+](https://plus.google.com/101095823814290637419), [GitHub](https://github.com/codrops), [Pinterest](http://www.pinterest.com/codrops/), [Instagram](https://www.instagram.com/codropsss/)
-
 
 [© Codrops 2017](http://www.codrops.com)

@@ -2,15 +2,17 @@ class GooeyOverlay {
   constructor(elm) {
     this.elm = elm;
     this.path = elm.querySelectorAll('path');
-    this.numPoints = 5;
+    this.numPoints = 4;
     this.duration = 1000;
     this.delayPointsArray = [];
     this.delayPointsMax = 0;
-    this.delayPerPath = 200;
+    this.delayPerPath = 60;
     this.timeStart = Date.now();
     this.isOpened = false;
+    this.isAnimating = false;
   }
   toggle() {
+    this.isAnimating = true;
     for (var i = 0; i < this.numPoints; i++) {
       this.delayPointsArray[i] = 0;
     }
@@ -35,7 +37,7 @@ class GooeyOverlay {
   updatePath(time) {
     const points = [];
     for (var i = 0; i < this.numPoints; i++) {
-      const thisEase = (i % 2 === 1) ? ease.quadraticOut : ease.quarticOut;
+      const thisEase = (i % 2 === 1) ? ease.sineOut : ease.exponentialInOut;
       points[i] = (1 - thisEase(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
     }
 
@@ -67,6 +69,9 @@ class GooeyOverlay {
         this.renderLoop();
       });
     }
+    else {
+      this.isAnimating = false;
+    }
   }
 }
 
@@ -77,6 +82,9 @@ class GooeyOverlay {
   const overlay = new GooeyOverlay(elmOverlay);
 
   elmHamburger.addEventListener('click', () => {
+    if (overlay.isAnimating) {
+      return false;
+    }
     overlay.toggle();
     if (overlay.isOpened === true) {
       elmHamburger.classList.add('is-opened-navi');

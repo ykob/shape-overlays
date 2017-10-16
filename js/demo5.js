@@ -1,4 +1,4 @@
-class GooeyOverlay {
+class ShapeOverlays {
   constructor(elm) {
     this.elm = elm;
     this.path = elm.querySelectorAll('path');
@@ -77,8 +77,8 @@ class GooeyOverlay {
 (function() {
   const elmHamburger = document.querySelector('.hamburger');
   const gNavItems = document.querySelectorAll('.global-menu__item');
-  const elmOverlay = document.querySelector('.gooey-overlay');
-  const overlay = new GooeyOverlay(elmOverlay);
+  const elmOverlay = document.querySelector('.shape-overlays');
+  const overlay = new ShapeOverlays(elmOverlay);
 
   elmHamburger.addEventListener('click', () => {
     if (overlay.isAnimating) {
